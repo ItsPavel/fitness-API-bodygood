@@ -1,14 +1,15 @@
 const workoutService = require("../services/workoutService");
+const errorHandler = require("../errors/index");
 
 const getAllWorkouts = (req, res) => {
   try {
-    const allWorkouts = workoutService.getAllWorkouts();
-    res.send({ status: "OK", data: allWorkouts });
+    const queryParams = req.query;
+
+    const { allWorkouts, page, limit } =
+      workoutService.getAllWorkouts(queryParams);
+    res.send({ status: "OK", data: allWorkouts, page, limit });
   } catch (error) {
-    res.status(error?.status || 500).send({
-      status: "ОШИБКА",
-      data: { error: error?.message || "Ошибка сервера" },
-    });
+    errorHandler(res, error);
   }
 };
 
@@ -26,10 +27,7 @@ const getOneWorkout = (req, res) => {
     const oneWorkout = workoutService.getOneWorkout(workoutId);
     res.send({ status: "OK", data: oneWorkout });
   } catch (error) {
-    res.status(error?.status || 500).send({
-      status: "ОШИБКА",
-      data: { error: error?.message || error },
-    });
+    errorHandler(res, error);
   }
 };
 
@@ -62,10 +60,7 @@ const createNewWorkout = (req, res) => {
       data: createdNewWorkout,
     });
   } catch (error) {
-    res.status(error?.status || 500).send({
-      status: "ОШИБКА",
-      data: { error: error?.message || error },
-    });
+    errorHandler(res, error);
   }
 };
 
@@ -83,12 +78,7 @@ const updateOneWorkout = (req, res) => {
     const updateWorkout = workoutService.updateOneWorkout(workoutId, req.body);
     res.send({ status: "OK", date: updateWorkout });
   } catch (error) {
-    res.status(error?.status || 500).send({
-      status: "ОШИБКА",
-      data: {
-        error: { error: error?.message ?? error },
-      },
-    });
+    errorHandler(res, error);
   }
 };
 
@@ -106,10 +96,7 @@ const deleteOneWorkout = (req, res) => {
     workoutService.deleteOneWorkout(workoutId);
     res.status(204).send({ status: "OK" });
   } catch (error) {
-    res.status(error?.status || 500).send({
-      status: "ОШИБКА",
-      data: { error: error?.message || error },
-    });
+    errorHandler(res, error);
   }
 };
 

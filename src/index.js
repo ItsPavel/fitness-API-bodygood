@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const v1WorkoutRouter = require("./v1/routes/workoutRoutes");
+const WorkoutRouter = require("./routes/workoutRoutes");
+const authRouter = require("./routes/authRoutes")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +11,8 @@ app.get("/", (req, res) => {
 });
 
 app.use(bodyParser.json());
-app.use("/api/v1/workouts", v1WorkoutRouter);
+app.use("/api/workouts", WorkoutRouter);
+app.use("/api/auth", authRouter);
 
 app.listen(PORT, () => {
   console.log(`start app with port ${PORT}`);

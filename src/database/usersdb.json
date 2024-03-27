@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "e11b3e09-2681-4f2f-af7f-d5ab9a2387f5",
+      "username": "user",
+      "password": "$2a$06$klW3oRjrfGoeby8c8KcjI.LcJ6fuhIJoI90nyhcDj1J1aLdKP97Fi",
+      "role": "user",
+      "createdAt": "26.03.2024, 19:54:47"
+    },
+    {
+      "id": "78f376cc-4b61-4264-974f-2625a1ef0eab",
+      "username": "admin",
+      "password": "$2a$06$vfl1ZjSeJJ5anciF5vOv5.gtiWLeyN4qYclruJK8FAgG7tTnZOEQu",
+      "role": "admin",
+      "createdAt": "27.03.2024, 13:09:07"
+    },
+    {
+      "id": "807ccc70-3b51-4c4a-aafe-0600922d0fcc",
+      "username": "admin2",
+      "password": "$2a$06$oPVhLsN9HrY6VN5jB9akGOMLYLqc8vHuFqvTPB.xGUKiI06OgoYdO",
+      "role": "user",
+      "createdAt": "27.03.2024, 14:05:43"
+    }
+  ]
+}

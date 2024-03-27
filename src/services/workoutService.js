@@ -1,9 +1,16 @@
-const Workout = require("../database/Workout");
+const Workout = require("./Workout");
 const { v4: uuidv4 } = require("uuid");
 
-const getAllWorkouts = () => {
+const getAllWorkouts = (queryParams) => {
   try {
-    const allWorkouts = Workout.getAllWorkouts();
+    const arrkey = Object.keys(queryParams);
+    if (!arrkey.includes("page")) {
+      queryParams.page = 1;
+    }
+    if (!arrkey.includes("limit")) {
+      queryParams.limit = 6;
+    }
+    const allWorkouts = Workout.getAllWorkouts(queryParams);
     return allWorkouts;
   } catch (error) {
     throw error;
